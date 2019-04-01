@@ -1,10 +1,14 @@
 package com.ccsu.db.dao;
 
 import com.ccsu.db.pojo.Usr;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-public interface usrMapper {
+import java.util.List;
+
+@Mapper
+public interface UsrMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Usr record);
@@ -17,6 +21,9 @@ public interface usrMapper {
 
     int updateByPrimaryKey(Usr record);
 
-    @Select(" select * from user where username=#{username} and password=#{password}")
+    @Select("select * from usr")
+    List<Usr> getAllUser();
+
+    @Select(" select * from usr where username=#{username} and password=#{password}")
     Usr login(@Param("loginname") String username, @Param("password") String password);
 }

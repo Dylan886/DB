@@ -1,8 +1,10 @@
 package com.ccsu.db.dao;
 
 import com.ccsu.db.pojo.Resource;
+import org.apache.ibatis.annotations.Mapper;
 
-public interface resourceMapper {
+@Mapper
+public interface ResourceMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Resource record);

@@ -1,8 +1,10 @@
 package com.ccsu.db.dao;
 
 import com.ccsu.db.pojo.Jurisdiction;
+import org.apache.ibatis.annotations.Mapper;
 
-public interface jurisdictionMapper {
+@Mapper
+public interface JurisdictionMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Jurisdiction record);
