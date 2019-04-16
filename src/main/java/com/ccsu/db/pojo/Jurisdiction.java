@@ -7,6 +7,7 @@ public class Jurisdiction {
     private boolean isAvailable;// 是否有权限。 1表示有，0表示没有
     private  Integer uid;// 指向具体用户
 
+
     public Integer getId() {
         return id;
     }
