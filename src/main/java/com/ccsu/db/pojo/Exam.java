@@ -1,15 +1,21 @@
 package com.ccsu.db.pojo;
 
-//试题
 public class Exam {
-    private Integer id; // id
-    private String type; // 题目类型
-    private  String grade; // 分数
-    private String question; // 问题
-    private String answer; // 答案
-    private String A; // 选项A
-    private String B;// 选项B
-    private String C;// 选项C
+    private Integer id;
+
+    private String type;
+
+    private String grade;
+
+    private String question;
+
+    private String answer;
+
+    private String a;
+
+    private String b;
+
+    private String c;
 
     public Integer getId() {
         return id;
@@ -52,35 +58,26 @@ public class Exam {
     }
 
     public String getA() {
-        return A;
+        return a;
     }
 
     public void setA(String a) {
-        A = a;
+        this.a = a;
     }
 
     public String getB() {
-        return B;
+        return b;
     }
 
     public void setB(String b) {
-        B = b;
+        this.b = b;
     }
 
     public String getC() {
-        return C;
+        return c;
     }
 
     public void setC(String c) {
-        C = c;
-    }
-
-    @Override
-    public String toString() {
-        return "Exam{" +
-                "type = " + type +
-                "question = " + question +
-                "answer = " + answer +
-                "}";
+        this.c = c;
     }
 }

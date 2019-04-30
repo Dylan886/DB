@@ -1,31 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ccsu.db.dao.ResourceMapper">
-  <resultMap id="BaseResultMap" type="com.ccsu.db.controller.resource">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="uid" jdbcType="INTEGER" property="uid" />
-    <result column="author" jdbcType="VARCHAR" property="author" />
-    <result column="resourcename" jdbcType="VARCHAR" property="resourcename" />
-    <result column="type" jdbcType="VARCHAR" property="type" />
-    <result column="date" jdbcType="VARCHAR" property="date" />
-    <result column="desrcibe" jdbcType="VARCHAR" property="desrcibe" />
-    <result column="isUsable" jdbcType="VARCHAR" property="isusable" />
-    <result column="url" jdbcType="VARCHAR" property="url" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccsu.db.dao.ResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.ccsu.db.pojo.Resource" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="resourcename" property="resourcename" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="desrcibe" property="desrcibe" jdbcType="VARCHAR" />
+    <result column="isUsable" property="isusable" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     id, uid, author, resourcename, type, date, desrcibe, isUsable, url
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from resource
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from resource
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.ccsu.db.controller.resource">
+  <insert id="insert" parameterType="com.ccsu.db.pojo.Resource" >
     insert into resource (id, uid, author, 
       resourcename, type, date, 
       desrcibe, isUsable, url
@@ -35,235 +35,98 @@
       #{desrcibe,jdbcType=VARCHAR}, #{isusable,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.ccsu.db.controller.resource">
+  <insert id="insertSelective" parameterType="com.ccsu.db.pojo.Resource" >
     insert into resource
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         id,
       </if>
-      <if test="uid != null">
+      <if test="uid != null" >
         uid,
       </if>
-      <if test="author != null">
+      <if test="author != null" >
         author,
       </if>
-      <if test="resourcename != null">
+      <if test="resourcename != null" >
         resourcename,
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         type,
       </if>
-      <if test="date != null">
+      <if test="date != null" >
         date,
       </if>
-      <if test="desrcibe != null">
+      <if test="desrcibe != null" >
         desrcibe,
       </if>
-      <if test="isusable != null">
+      <if test="isusable != null" >
         isUsable,
       </if>
-      <if test="url != null">
+      <if test="url != null" >
         url,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="uid != null">
+      <if test="uid != null" >
         #{uid,jdbcType=INTEGER},
       </if>
-      <if test="author != null">
+      <if test="author != null" >
         #{author,jdbcType=VARCHAR},
       </if>
-      <if test="resourcename != null">
+      <if test="resourcename != null" >
         #{resourcename,jdbcType=VARCHAR},
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         #{type,jdbcType=VARCHAR},
       </if>
-      <if test="date != null">
+      <if test="date != null" >
         #{date,jdbcType=VARCHAR},
       </if>
-      <if test="desrcibe != null">
+      <if test="desrcibe != null" >
         #{desrcibe,jdbcType=VARCHAR},
       </if>
-      <if test="isusable != null">
+      <if test="isusable != null" >
         #{isusable,jdbcType=VARCHAR},
       </if>
-      <if test="url != null">
+      <if test="url != null" >
         #{url,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ccsu.db.controller.resource">
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccsu.db.pojo.Resource" >
     update resource
-    <set>
-      <if test="uid != null">
+    <set >
+      <if test="uid != null" >
         uid = #{uid,jdbcType=INTEGER},
       </if>
-      <if test="author != null">
+      <if test="author != null" >
         author = #{author,jdbcType=VARCHAR},
       </if>
-      <if test="resourcename != null">
+      <if test="resourcename != null" >
         resourcename = #{resourcename,jdbcType=VARCHAR},
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         type = #{type,jdbcType=VARCHAR},
       </if>
-      <if test="date != null">
+      <if test="date != null" >
         date = #{date,jdbcType=VARCHAR},
       </if>
-      <if test="desrcibe != null">
+      <if test="desrcibe != null" >
         desrcibe = #{desrcibe,jdbcType=VARCHAR},
       </if>
-      <if test="isusable != null">
+      <if test="isusable != null" >
         isUsable = #{isusable,jdbcType=VARCHAR},
       </if>
-      <if test="url != null">
+      <if test="url != null" >
         url = #{url,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ccsu.db.controller.resource">
-    update resource
-    set uid = #{uid,jdbcType=INTEGER},
-      author = #{author,jdbcType=VARCHAR},
-      resourcename = #{resourcename,jdbcType=VARCHAR},
-      type = #{type,jdbcType=VARCHAR},
-      date = #{date,jdbcType=VARCHAR},
-      desrcibe = #{desrcibe,jdbcType=VARCHAR},
-      isUsable = #{isusable,jdbcType=VARCHAR},
-      url = #{url,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.ccsu.controller.resource">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="uid" jdbcType="INTEGER" property="uid" />
-    <result column="author" jdbcType="VARCHAR" property="author" />
-    <result column="resourcename" jdbcType="VARCHAR" property="resourcename" />
-    <result column="type" jdbcType="VARCHAR" property="type" />
-    <result column="date" jdbcType="VARCHAR" property="date" />
-    <result column="desrcibe" jdbcType="VARCHAR" property="desrcibe" />
-    <result column="isUsable" jdbcType="VARCHAR" property="isusable" />
-    <result column="url" jdbcType="VARCHAR" property="url" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, uid, author, resourcename, type, date, desrcibe, isUsable, url
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from resource
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from resource
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.ccsu.controller.resource">
-    insert into resource (id, uid, author, 
-      resourcename, type, date, 
-      desrcibe, isUsable, url
-      )
-    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{author,jdbcType=VARCHAR}, 
-      #{resourcename,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR}, 
-      #{desrcibe,jdbcType=VARCHAR}, #{isusable,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.ccsu.controller.resource">
-    insert into resource
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="uid != null">
-        uid,
-      </if>
-      <if test="author != null">
-        author,
-      </if>
-      <if test="resourcename != null">
-        resourcename,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-      <if test="date != null">
-        date,
-      </if>
-      <if test="desrcibe != null">
-        desrcibe,
-      </if>
-      <if test="isusable != null">
-        isUsable,
-      </if>
-      <if test="url != null">
-        url,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="uid != null">
-        #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="author != null">
-        #{author,jdbcType=VARCHAR},
-      </if>
-      <if test="resourcename != null">
-        #{resourcename,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=VARCHAR},
-      </if>
-      <if test="date != null">
-        #{date,jdbcType=VARCHAR},
-      </if>
-      <if test="desrcibe != null">
-        #{desrcibe,jdbcType=VARCHAR},
-      </if>
-      <if test="isusable != null">
-        #{isusable,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null">
-        #{url,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ccsu.controller.resource">
-    update resource
-    <set>
-      <if test="uid != null">
-        uid = #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="author != null">
-        author = #{author,jdbcType=VARCHAR},
-      </if>
-      <if test="resourcename != null">
-        resourcename = #{resourcename,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=VARCHAR},
-      </if>
-      <if test="date != null">
-        date = #{date,jdbcType=VARCHAR},
-      </if>
-      <if test="desrcibe != null">
-        desrcibe = #{desrcibe,jdbcType=VARCHAR},
-      </if>
-      <if test="isusable != null">
-        isUsable = #{isusable,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null">
-        url = #{url,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.ccsu.controller.resource">
+  <update id="updateByPrimaryKey" parameterType="com.ccsu.db.pojo.Resource" >
     update resource
     set uid = #{uid,jdbcType=INTEGER},
       author = #{author,jdbcType=VARCHAR},

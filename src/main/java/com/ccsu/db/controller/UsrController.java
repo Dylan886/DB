@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -22,10 +23,12 @@ public class UsrController {
         return this.usrService.getAllUsr();
     }
     //进行登录操作
-    //考虑判断从vue的lcoalStorage的字段传值过来
+    //考虑判断从lcoalStorage的字段传值过来
     @RequestMapping("/login")
     @ResponseBody
-    Usr login(String username,String password){
+    Usr login(HttpServletRequest req){
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
         return  this.usrService.login(username, password);
     }
     //根据Id查询指定用户
@@ -35,27 +38,21 @@ public class UsrController {
         return this.usrService.selectByPrimaryKey(id);
     }
 
-    @RequestMapping("/queryAll")
-    @ResponseBody
-    List<Usr> queryAll() {
-        return null;
-    }
-
     @RequestMapping("/insert")
     @ResponseBody
-    int insert(Usr Usr) {
-        return this.usrService.insert(Usr);
+    int insert(Usr usr) {
+        return this.usrService.insertSelective(usr);
     }
 
     @RequestMapping("/updateById")
     @ResponseBody
-    int updateByPrimaryKey(Usr Usr) {
-        return this.usrService.updateByPrimaryKey(Usr);
+    int updateByPrimaryKey(Usr usr) {
+        return this.usrService.updateByPrimaryKey(usr);
     }
 
     @RequestMapping("/deleteById")
     @ResponseBody
-    int deleteByPrimaryKey(int id) {
+    int deleteByPrimaryKey(Integer id) {
         return this.usrService.deleteByPrimaryKey(id);
     }
 }

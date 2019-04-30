@@ -31,10 +31,11 @@ public class ResourceService {
     }
 
     public List<Resource> queryAll() {
-        return null;
+        return resourceMapper.queryAll();
     }
     //通过id删除指定资源
     public int deleteByPrimaryKey(int id) {
         return this.resourceMapper.deleteByPrimaryKey(id);
     }
+
 }

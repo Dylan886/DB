@@ -2,6 +2,9 @@ package com.ccsu.db.dao;
 
 import com.ccsu.db.pojo.Resource;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 @Mapper
 public interface ResourceMapper {
@@ -16,4 +19,7 @@ public interface ResourceMapper {
     int updateByPrimaryKeySelective(Resource record);
 
     int updateByPrimaryKey(Resource record);
+
+    @Select("select * from resource")
+    List<Resource> queryAll();
 }

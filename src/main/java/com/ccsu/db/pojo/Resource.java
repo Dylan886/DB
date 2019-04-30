@@ -1,16 +1,23 @@
 package com.ccsu.db.pojo;
 
-// 资源包括但不限于网站显示的课件
 public class Resource {
-    private Integer id; // 资源id
-    private Integer uid;// 上传人
-    private String author;// 作者
-    private String resourcename;// 资源名称
-    private String type;// 资源类型
-    private String date; // 上传时间
-    private String describe;// 描述
-    private Boolean isUsable;// 可用性
-    private String url;// 文件路径
+    private Integer id;
+
+    private Integer uid;
+
+    private String author;
+
+    private String resourcename;
+
+    private String type;
+
+    private String date;
+
+    private String desrcibe;
+
+    private String isusable;
+
+    private String url;
 
     public Integer getId() {
         return id;
@@ -44,14 +51,6 @@ public class Resource {
         this.resourcename = resourcename;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getType() {
         return type;
     }
@@ -60,20 +59,28 @@ public class Resource {
         this.type = type;
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getDate() {
+        return date;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public Boolean getUsable() {
-        return isUsable;
+    public String getDesrcibe() {
+        return desrcibe;
     }
 
-    public void setUsable(Boolean usable) {
-        isUsable = usable;
+    public void setDesrcibe(String desrcibe) {
+        this.desrcibe = desrcibe;
+    }
+
+    public String getIsusable() {
+        return isusable;
+    }
+
+    public void setIsusable(String isusable) {
+        this.isusable = isusable;
     }
 
     public String getUrl() {
@@ -82,17 +89,5 @@ public class Resource {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    @Override
-    public String toString() {
-        return "Resource{" +
-                "id = " + id +
-                "type = " + type +
-                "describe = " + describe +
-                "date = " + date +
-                "author = "+ author +
-                "isUsable = " + isUsable +
-                "url = " + url;
     }
 }

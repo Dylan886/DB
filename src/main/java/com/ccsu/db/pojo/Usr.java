@@ -1,16 +1,23 @@
 package com.ccsu.db.pojo;
 
-// 用户
 public class Usr {
-    private Integer id; // id
-    private String loginname; // （登录）用户名
-    private String password; // 登陆密码
-    private Integer age; // 年龄
-    private String type; // 用户类型
-    private String address;// 地址
-    private String sex;// 性别
-    private String tel;// 联系方式
-    private String email;// 邮箱
+    private Integer id;
+
+    private String loginname;
+
+    private String password;
+
+    private Integer age;
+
+    private String type;
+
+    private String address;
+
+    private String sex;
+
+    private String tel;
+
+    private String email;
 
     public Integer getId() {
         return id;
@@ -82,15 +89,5 @@ public class Usr {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", loginname=" + loginname +
-                ", password="+ password +
-                ", age=" + age +
-                '}';
     }
 }

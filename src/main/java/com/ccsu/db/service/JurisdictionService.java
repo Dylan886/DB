@@ -29,6 +29,6 @@ public class JurisdictionService {
     }
     //
     public List<Jurisdiction> queryAll(){
-        return null;
+        return jurisdictionMapper.queryAll();
     }
 }

@@ -15,16 +15,16 @@ public class UsrService {
     private UsrMapper usrMapper;
 
     ///通过id查询
-    public Usr selectByPrimaryKey(int id) {
+    public Usr selectByPrimaryKey(Integer id) {
         return usrMapper.selectByPrimaryKey(id);
     }
     //查出所有用户
     public List<Usr> getAllUsr() {
-        return usrMapper.getAllUser();
+        return usrMapper.getAllUsr();
     }
     //增加用户
-    public int insert(Usr usr) {
-        return usrMapper.insert(usr);
+    public int insertSelective(Usr usr) {
+        return usrMapper.insertSelective(usr);
     }
     //通过id更新信息
     public int updateByPrimaryKey(Usr user) {
@@ -34,8 +34,9 @@ public class UsrService {
     public int deleteByPrimaryKey(int id) {
         return usrMapper.deleteByPrimaryKey(id);
     }
+
     //登录操作
-    public Usr login(String username, String password) {
-        return usrMapper.login(username, password);
+    public Usr login(String loginname, String password) {
+        return usrMapper.login(loginname, password);
     }
 }

@@ -2,6 +2,9 @@ package com.ccsu.db.dao;
 
 import com.ccsu.db.pojo.Jurisdiction;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 @Mapper
 public interface JurisdictionMapper {
@@ -16,4 +19,7 @@ public interface JurisdictionMapper {
     int updateByPrimaryKeySelective(Jurisdiction record);
 
     int updateByPrimaryKey(Jurisdiction record);
+
+    @Select("select * from jurisdiction")
+    List<Jurisdiction> queryAll();
 }

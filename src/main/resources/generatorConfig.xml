@@ -8,7 +8,7 @@
 
         <context id="DB2Tables" targetRuntime="MyBatis3">
             <commentGenerator>
-                <property name="suppressDate" value="true"/>
+                <property name="suppressDate" value="false"/>
                 <!-- 是否去除自动生成的注释 true：是 ; false:否 -->
                 <property name="suppressAllComments" value="true"/>
             </commentGenerator>
@@ -28,7 +28,7 @@
             </javaTypeResolver>
 
             <!-- 生成模型的包名和位置 -->
-            <javaModelGenerator targetPackage="com.ccsu.db.controller"
+            <javaModelGenerator targetPackage="com.ccsu.db.pojo"
                                 targetProject="src/main/java">
                 <property name="Exam" value="true"/>
             </javaModelGenerator>
@@ -47,6 +47,9 @@
                                  targetPackage="com.ccsu.db.dao"
                                  targetProject="src/main/java">
                 <property name="Exam" value="true"/>
+                <property name="Jurisdiction" value="true"/>
+                <property name="Resource" value="true"/>
+                <property name="Usr" value="true"/>
             </javaClientGenerator>
 
 
@@ -56,17 +59,17 @@
                    enableDeleteByExample="false" enableSelectByExample="false"
                    selectByExampleQueryId="false">
             </table>
-            <table tableName="usr" domainObjectName="usr"
+            <table tableName="usr" domainObjectName="Usr"
                    enableCountByExample="false" enableUpdateByExample="false"
                    enableDeleteByExample="false" enableSelectByExample="false"
                    selectByExampleQueryId="false">
             </table>
-            <table tableName="resource" domainObjectName="resource"
+            <table tableName="resource" domainObjectName="Resource"
                    enableCountByExample="false" enableUpdateByExample="false"
                    enableDeleteByExample="false" enableSelectByExample="false"
                    selectByExampleQueryId="false">
             </table>
-            <table tableName="jurisdiction" domainObjectName="jurisdiction"
+            <table tableName="jurisdiction" domainObjectName="Jurisdiction"
                    enableCountByExample="false" enableUpdateByExample="false"
                    enableDeleteByExample="false" enableSelectByExample="false"
                    selectByExampleQueryId="false">
