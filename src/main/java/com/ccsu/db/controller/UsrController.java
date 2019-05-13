@@ -3,6 +3,7 @@ package com.ccsu.db.controller;
 import com.ccsu.db.pojo.Usr;
 import com.ccsu.db.service.UsrService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,7 +47,7 @@ public class UsrController {
 
     @RequestMapping("/updateById")
     @ResponseBody
-    int updateByPrimaryKey(Usr usr) {
+    int updateByPrimaryKey(@RequestBody Usr usr) {
         return this.usrService.updateByPrimaryKey(usr);
     }
 

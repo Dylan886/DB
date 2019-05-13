@@ -11,6 +11,7 @@ import java.util.List;
 public class ExamService {
     @Autowired
     private ExamMapper examMapper;
+
     //通过id查询
     public Exam selectByPrimaryKey(int id) {
         return this.examMapper.selectByPrimaryKey(id);
@@ -21,14 +22,15 @@ public class ExamService {
     }
     //增加一条记录
     public int insert(Exam exam) {
-        return this.examMapper.insert(exam);
+        return this.examMapper.insertSelective(exam);
     }
 
     public List<Exam> queryAll() {
-        return null;
+        return this.examMapper.queryAll();
     }
     //通过id删除
     public int deleteByPrimaryKey(int id) {
         return this.examMapper.deleteByPrimaryKey(id);
     }
+
 }

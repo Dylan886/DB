@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.*;
 import java.util.List;
 
 @RestController
@@ -45,5 +46,35 @@ public class ResourceController {
     @ResponseBody
     int deleteByPrimaryKey(int id) {
         return this.resourceService.deleteByPrimaryKey(id);
+    }
+
+    @RequestMapping("/getFile")
+    @ResponseBody
+    String getFile(String fileName){
+        String innerText = "";
+        StringBuffer content = new StringBuffer();
+        if (fileName != null) {
+            //设置文件路径
+            int position=0;
+            String[] bufstring=new String[1024];
+            try {
+                //打开带读取的文件
+                BufferedReader br = new BufferedReader(new FileReader(new File("").getCanonicalPath()+"\\File\\"+fileName));
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    bufstring[position] = line;
+                    position++;
+                }
+                br.close();//关闭文件
+                for (int i = 0; i < position; i++) {
+                    content.append(bufstring[i]);
+                    content.append("<br />");
+                }
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+        }
+        innerText = content.toString();
+      return innerText;
     }
 }

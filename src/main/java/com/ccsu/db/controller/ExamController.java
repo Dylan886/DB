@@ -4,9 +4,7 @@ package com.ccsu.db.controller;
 import com.ccsu.db.pojo.Exam;
 import com.ccsu.db.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,7 +25,11 @@ public class ExamController {
     @RequestMapping("/getAllExam")
     @ResponseBody
     public List<Exam> queryAll() {
-        return this.examService.queryAll();
+        List<Exam> examList = this.examService.queryAll();
+        for (Exam exam: examList) {
+            exam.setAnswer("");
+        }
+        return examList;
     }
 
     @RequestMapping("/insert")
@@ -46,5 +48,18 @@ public class ExamController {
     @ResponseBody
     int deleteByPrimaryKey(int id) {
         return this.examService.deleteByPrimaryKey(id);
+    }
+
+    @RequestMapping("/getGrade")
+    @ResponseBody
+    int getGrade(@RequestBody List<Exam> examList){
+        int grade = 0;
+        for (Exam exam: examList) {
+            Exam realExam = this.examService.selectByPrimaryKey(exam.getId());
+            if (realExam.getAnswer().equals(exam.getAnswer())){
+                grade += Integer.valueOf(realExam.getGrade());
+            }
+        }
+        return grade;
     }
 }
