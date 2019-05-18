@@ -46,5 +46,9 @@ public class JurisdictionController {
     int deleteByPrimaryKey(int id) {
         return this.jurisdictionService.deleteByPrimaryKey(id);
     }
+
+    @RequestMapping("/getJurisdictionById")
+    @ResponseBody
+    String getJurisdictionById(int id){ return this.jurisdictionService.getJurisdictionById(id);}
 }
 

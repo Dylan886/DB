@@ -31,4 +31,8 @@ public class JurisdictionService {
     public List<Jurisdiction> queryAll(){
         return jurisdictionMapper.queryAll();
     }
+
+    public String getJurisdictionById(int id) {
+        return this.jurisdictionMapper.getJurisdictionById(id);
+    }
 }
