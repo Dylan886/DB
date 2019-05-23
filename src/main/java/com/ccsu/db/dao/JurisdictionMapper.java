@@ -23,6 +23,6 @@ public interface JurisdictionMapper {
     @Select("select * from jurisdiction")
     List<Jurisdiction> queryAll();
 
-    @Select("select mode")
-    String getJurisdictionById(int id);
+    @Select("select * from jurisdiction where uid =#{uid}")
+    Jurisdiction getJurisdictionByUId(int uid);
 }

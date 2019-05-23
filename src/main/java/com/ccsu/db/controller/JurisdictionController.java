@@ -23,12 +23,6 @@ public class JurisdictionController {
         return this.jurisdictionService.selectByPrimaryKey(id);
     }
 
-    @RequestMapping("/getAlljurisdiction")
-    @ResponseBody
-    public List<Jurisdiction> queryAll() {
-        return this.jurisdictionService.queryAll();
-    }
-
     @RequestMapping("/insert")
     @ResponseBody
     int insert(Jurisdiction jurisdiction) {
@@ -49,6 +43,16 @@ public class JurisdictionController {
 
     @RequestMapping("/getJurisdictionById")
     @ResponseBody
-    String getJurisdictionById(int id){ return this.jurisdictionService.getJurisdictionById(id);}
+    Jurisdiction getJurisdictionById(int id){ return this.jurisdictionService.getJurisdictionById(id);}
+
+    @RequestMapping("/getJurisdictionByUId")
+    @ResponseBody
+    Jurisdiction getJurisdictionByUId(int uid){ return this.jurisdictionService.getJurisdictionByUId(uid);}
+
+    @RequestMapping("/getAll")
+    @ResponseBody
+    public List<Jurisdiction> getAllUsr() {
+        return this.jurisdictionService.queryAll();
+    }
 }
 

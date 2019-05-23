@@ -32,7 +32,11 @@ public class JurisdictionService {
         return jurisdictionMapper.queryAll();
     }
 
-    public String getJurisdictionById(int id) {
-        return this.jurisdictionMapper.getJurisdictionById(id);
+    public Jurisdiction getJurisdictionById(int id) {
+        return this.jurisdictionMapper.selectByPrimaryKey(id);
+    }
+
+    public Jurisdiction getJurisdictionByUId(int uid) {
+        return this.jurisdictionMapper.getJurisdictionByUId(uid);
     }
 }
