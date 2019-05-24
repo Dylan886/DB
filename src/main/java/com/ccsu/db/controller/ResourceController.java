@@ -32,14 +32,23 @@ public class ResourceController {
 
     @RequestMapping("/insert")
     @ResponseBody
-    int insert(Resource Resource) {
-        return this.resourceService.insert(Resource);
+    int insert(Resource resource) {
+        List<Resource> r = this.resourceService.queryAll();
+        for(Resource re: r) {
+            System.out.println(re.getAuthor().equals(resource.getAuthor()));
+            if(re.getResourcename().equals(resource.getResourcename()) && re.getAuthor().equals(resource.getAuthor())) {
+                re.setIsusable("等待审核");
+
+                return this.resourceService.updateByPrimaryKey(re);
+            }
+        }
+        return this.resourceService.insert(resource);
     }
 
     @RequestMapping("/updateById")
     @ResponseBody
-    int updateByPrimaryKey(Resource Resource) {
-        return this.resourceService.updateByPrimaryKey(Resource);
+    int updateByPrimaryKey(Resource resource) {
+        return this.resourceService.updateByPrimaryKey(resource);
     }
 
     @RequestMapping("/deleteById")

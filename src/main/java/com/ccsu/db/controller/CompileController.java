@@ -36,7 +36,7 @@ public class CompileController {
                 //输出错误信息
                 rm.setErrcode(-1);
             } else {
-                sb.append("[ Main.java ]编译成功！\n");
+                sb.append("[ Main.java ]编译成功！&\n");
                 //通过类加载器来动态运行编译好的类
                 URL[] urls = new URL[]{new URL("file:/" + "G:/Pratice/毕设/db/File/")};
                 URLClassLoader loader = new URLClassLoader(urls);
@@ -50,7 +50,7 @@ public class CompileController {
                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
                 System.setOut(new PrintStream(bos));         //设置新的out
                 mainMethod.invoke(null, (Object)new String[]{"111", "222", "333"});
-                sb.append(bos);
+                sb.append(bos+"&");
                 System.setOut(oldPrintStream);   //恢复原来的System.out
 
 
